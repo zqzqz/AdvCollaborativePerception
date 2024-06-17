@@ -1,9 +1,9 @@
 [submodule "third_party/OpenCOOD"]
 	path = third_party/OpenCOOD
 	url = https://github.com/DerrickXuNu/OpenCOOD.git
-	ignore = True
+	ignore = all
 [submodule "SqueezeSegV3"]
 	path = third_party/SqueezeSegV3
 	url = https://github.com/zqzqz/SqueezeSegV3.git
 	branch = mvp
-	ignore = True
+	ignore = all
