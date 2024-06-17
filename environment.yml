@@ -1,0 +1,21 @@
+name: advCP
+channels:
+  - defaults
+dependencies:
+  - pip==21.1.2
+  - python==3.7.11
+  - pip:
+    - matplotlib==3.4.2
+    - numpy==1.19
+    - open3d
+    - opencv-python==4.5.5.62
+    - cython
+    - pygame
+    - tensorboardX
+    - shapely==1.8.1
+    - einops
+    - cumm
+    - timm
+    - pygad==2.17.0
+    - gdown
+    - chardet
