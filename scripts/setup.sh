@@ -51,7 +51,6 @@ conda run --live-stream -n $env_name python opencood/utils/setup.py build_ext --
 conda run --live-stream -n $env_name python opencood/pcdet_utils/setup.py build_ext --inplace
 cd -
 
-echo "########################## All Evaluation ##########################"
-echo "Running all evaluation tasks (this may take a long time) ..."
-echo "If the evaluation is interrupted, run python scripts/evaluation.py to resume."
-conda run --live-stream -n $env_name python scripts/evaluate.py
+echo "The environment is set and you should be able to run the evaluation. Commands"
+echo "    conda activate advCP"
+echo "    python scripts/evaluate.py"

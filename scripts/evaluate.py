@@ -29,11 +29,11 @@ from mvp.attack.lidar_remove_intermediate_attacker import LidarRemoveIntermediat
 from mvp.attack.lidar_remove_late_attacker import LidarRemoveLateAttacker
 from mvp.defense.perception_defender import PerceptionDefender
 
-logging.basicConfig(level=logging.INFO)
-
-result_dir = os.path.join(os.path.abspath(os.path.dirname(__file__)), "../result")
+result_dir = os.path.normpath(os.path.join(os.path.abspath(os.path.dirname(__file__)), "../result"))
 attack_frame_ids = [9]
 total_frames = 10
+
+logging.basicConfig(filename=os.path.join(result_dir, "evaluate.log"), filemode="a", level=logging.INFO)
 
 dataset = OPV2VDataset(root_path=os.path.join(data_root, "OPV2V"), mode="test")
 
