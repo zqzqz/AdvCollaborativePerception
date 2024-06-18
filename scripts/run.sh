@@ -40,14 +40,15 @@ if [ ! -f data/OPV2V/test.zip ]; then
 fi
 
 echo "########################## Dependency Setup ##########################"
+echo "Setting up IoU cuda operator ..."
+cd mvp/perception/cuda_op 
+conda run --live-stream -n $env_name python setup.py install
+cd -
+
 echo "Setting up OpenCOOD ..."
 cd third_party/OpenCOOD
 conda run --live-stream -n $env_name python opencood/utils/setup.py build_ext --inplace
 conda run --live-stream -n $env_name python opencood/pcdet_utils/setup.py build_ext --inplace
-cd -
-echo "Setting up IoU cuda operator ..."
-cd mvp/perception/cuda_op 
-conda run --live-stream -n $env_name python setup.py install
 cd -
 
 echo "########################## All Evaluation ##########################"

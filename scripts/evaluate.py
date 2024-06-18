@@ -29,8 +29,8 @@ from mvp.attack.lidar_remove_intermediate_attacker import LidarRemoveIntermediat
 from mvp.attack.lidar_remove_late_attacker import LidarRemoveLateAttacker
 from mvp.defense.perception_defender import PerceptionDefender
 
-
 logging.basicConfig(level=logging.INFO)
+
 result_dir = os.path.join(os.path.abspath(os.path.dirname(__file__)), "../result")
 attack_frame_ids = [9]
 total_frames = 10
@@ -83,7 +83,6 @@ defender_list = [
     PerceptionDefender(),
 ]
 defender_dict = OrderedDict([(x.name, x) for x in defender_list])
-
 
 pickle_cache = OrderedDict()
 pickle_cache_size = 600
@@ -148,7 +147,6 @@ def normal_perception(case_id=None, case=None, data_dir=None):
     for perception_name, perception in perception_dict.items():
         save_file = os.path.join(data_dir, "{}.pkl".format(perception_name))
         if os.path.isfile(save_file):
-            logging.info("Skipped case_id {}".format(case_id))
             continue
         else:
             logging.info("Processing perception {} on normal case {}".format(perception.name, case_id))
@@ -166,7 +164,6 @@ def normal_perception(case_id=None, case=None, data_dir=None):
 def attack_perception(attacker, case_id=None, case=None, data_dir=None, attack_id=None, attack=None):
     save_file = os.path.join(data_dir, "attack_info.pkl")
     if os.path.isfile(save_file):
-        logging.info("Skipped attack {} and attack case {}".format(attacker.name, attack_id))
         return
     else:
         logging.info("Processing attack {} and attack case {}".format(attacker.name, attack_id))
@@ -272,7 +269,6 @@ def attack_evaluation(attacker, perception_name):
 def occupancy_map(lidar_seg_api, case_id=None, case=None, data_dir=None):
     save_file = os.path.join(data_dir, "occupancy_map.pkl")
     if os.path.isfile(save_file):
-        logging.info("Skipped case {}".format(case_id))
         return
     else:
         logging.info("Processing occupancy map of case {}".format(case_id))
@@ -329,11 +325,10 @@ def defense(attacker, defender, perception_name, case_id=None, case=None, data_d
     else:
         save_file = os.path.join(data_dir, "{}.pkl".format(defender.name))
         vis_file = os.path.join(data_dir, "{}.png".format(defender.name))
-    # if os.path.isfile(save_file):
-    #     logging.info("Skipped case {}".format(case_id))
-    #     return
-    # else:
-    #     logging.info("Processing defense {} against attack {} on attack case {}".format(defender.name, attacker.name, attack_id))
+    if os.path.isfile(save_file):
+        return
+    else:
+        logging.info("Processing defense {} against attack {} on attack case {}".format(defender.name, attacker.name, attack_id))
     logging.info("Processing defense {} against attack {} on attack case {}".format(defender.name, attacker.name, attack_id))
 
     if "early" in attacker.name:
@@ -452,8 +447,12 @@ def defense_evaluation(attacker, defender, perception_name):
 
 
 def main():
+    # First do perception on normal cases as the baseline.
+    logging.info("######################## Perception on normal cases ########################")
     normal_perception()
 
+    # Launch all attacks.
+    logging.info("######################## Launching attacks ########################")
     for attacker_name, attacker in attacker_dict.items():
         attack_perception(attacker)
         if "early" in attacker_name:
@@ -461,10 +460,14 @@ def main():
                 attack_evaluation(attacker, perception_name)
         else:
             attack_evaluation(attacker, attacker.perception.name)
-        
+    
+    # Precompute occupancy maps for defense.
+    logging.info("######################## Generating occupancy maps ########################")
     lidar_seg_api = SqueezeSegInterface()
     occupancy_map(lidar_seg_api)
 
+    # Launch the defense on each attack.
+    logging.info("######################## Launching defenses ########################")
     for attacker_name, attacker in attacker_dict.items():
         for defender_name, defender in defender_dict.items():
             if "early" in attacker_name:

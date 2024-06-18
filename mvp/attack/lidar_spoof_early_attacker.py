@@ -74,16 +74,16 @@ class LidarSpoofEarlyAttacker(Attacker):
                 shift_vector = attack_opts["positions"][frame_id][:3] - attack_opts["positions"][frame_id - 1][:3]
                 
                 append_data = []
-                if last_info["replace_data"] is not None:
+                if last_info["replace_data"] is not None and last_info["replace_data"].shape[0] > 0:
                     append_data.append(last_info["replace_data"] + shift_vector)
-                if last_info["append_data"] is not None:
+                if last_info["append_data"] is not None and last_info["append_data"].shape[0] > 0:
                     append_data.append(last_info["append_data"] + shift_vector)
                 append_data = np.vstack(append_data)
 
                 ignore_indices = []
-                if info["replace_indices"] is not None:
+                if info["replace_indices"] is not None and last_info["replace_indices"].shape[0] > 0:
                     ignore_indices.append(info["replace_indices"])
-                if info["ignore_indices"] is not None:
+                if info["ignore_indices"] is not None and last_info["ignore_indices"].shape[0] > 0:
                     ignore_indices.append(info["ignore_indices"])
                 ignore_indices = np.hstack(ignore_indices).reshape(-1)
 
