@@ -33,4 +33,4 @@ The script will install dependencies, download dataset from Google Drives, set u
 
 **Q:** Deprecated functions of `numpy` or `shapely`.
 
-**A:** Our code is tested on `numpy==1.19` and `shapely==1.8.1`. `numpy>=1.20` and `shapely==1.2` may throw warnings or errors about deprecated functions.
+**A:** Our code is tested on `numpy==1.19` and `shapely==1.8.1`. `numpy>=1.20` and `shapely>=2.0` may throw warnings or errors about deprecated functions.

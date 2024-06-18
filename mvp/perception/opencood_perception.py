@@ -1,5 +1,8 @@
 from concurrent.futures import process
 import os, sys
+from mvp.config import third_party_root
+opencood_root = os.path.join(third_party_root, "OpenCOOD")
+sys.path.append(opencood_root)
 import numpy as np
 from collections import OrderedDict
 import torch
