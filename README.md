@@ -11,10 +11,13 @@ Repo for USENIX security 2024 paper "On Data Fabrication in Collaborative Vehicu
 ```bash
 git clone --recursive https://github.com/zqzqz/AdvCollaborativePerception.git
 cd AdvCollaborativePerception
-bash scripts/run.sh
+bash scripts/setup.sh
+conda activate advCP
+python scripts/evaluate.py
+cat result/evaluate.log
 ```
 
-The script will install dependencies, download dataset from Google Drives, set up the environment, and execute all evaluation tasks. Results are saved to `result` by default.
+The scripts will install dependencies, download dataset from Google Drives, set up the environment, and execute all evaluation tasks. Results are saved to `result` by default.
 
 ## Structure of the repository
 
@@ -29,7 +32,7 @@ The script will install dependencies, download dataset from Google Drives, set u
 
 **Q:** Problems of CUDA and PyTorch.
 
-**A:** Our script `scripts/run.sh` by default installs PyTorch 1.9.1 and CUDA 10.2. Please adjust the versions if it does not work for your environment.
+**A:** Our script `scripts/setup.sh` by default installs PyTorch 1.9.1 and CUDA 10.2. Please adjust the versions if it does not work for your environment.
 
 **Q:** Deprecated functions of `numpy` or `shapely`.
 
