@@ -4,6 +4,7 @@
 *.pkl
 *.npy
 *.log
+*.out
 /data
 /models
 /result

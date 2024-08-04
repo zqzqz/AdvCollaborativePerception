@@ -30,6 +30,8 @@ from mvp.attack.lidar_remove_late_attacker import LidarRemoveLateAttacker
 from mvp.defense.perception_defender import PerceptionDefender
 
 result_dir = os.path.normpath(os.path.join(os.path.abspath(os.path.dirname(__file__)), "../result"))
+os.makedirs(result_dir, exist_ok=True)
+
 attack_frame_ids = [9]
 total_frames = 10
 

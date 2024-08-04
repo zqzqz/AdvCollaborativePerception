@@ -9,10 +9,18 @@ Repo for USENIX security 2024 paper "On Data Fabrication in Collaborative Vehicu
 ## Get started
 
 ```bash
+# Get the codebase.
 git clone --recursive https://github.com/zqzqz/AdvCollaborativePerception.git
 cd AdvCollaborativePerception
+
+# Set up the Python environment.
 bash scripts/setup.sh
 conda activate advCP
+
+# Download data from Google Drive
+bash scripts/download.sh
+
+# Run evaluation.
 python scripts/evaluate.py
 cat result/evaluate.log
 ```
@@ -32,8 +40,16 @@ The scripts will install dependencies, download dataset from Google Drives, set 
 
 **Q:** Problems of CUDA and PyTorch.
 
-**A:** Our script `scripts/setup.sh` by default installs PyTorch 1.9.1 and CUDA 10.2. Please adjust the versions if it does not work for your environment.
+**A:** Our script `scripts/setup.sh` by default installs PyTorch 1.9.1 and CUDA 10.2. Please adjust the versions if it does not work for your environment. If the conda environment is not working for you, please try downloading the packages from pip, following instructions from [PyTorch website]{https://pytorch.org/get-started/locally/}.
 
 **Q:** Deprecated functions of `numpy` or `shapely`.
 
 **A:** Our code is tested on `numpy==1.19` and `shapely==1.8.1`. `numpy>=1.20` and `shapely>=2.0` may throw warnings or errors about deprecated functions.
+
+**Q:** Data downloading via `scripts/download.sh` is failed.
+
+**A:** Please try to download data manually from Google Drive websites. The links are detailed in `scripts/download.sh`.
+
+**Q:** Fail to compile CUDA programs.
+
+**A:** Please make sure the machine has C++ compiling tools installed. For instance, `sudo apt-get install build-essential` for Ubuntu OS.
