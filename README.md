@@ -1,5 +1,5 @@
 # AdvCollaborativePerception
-Repo for USENIX security 2024 paper "On Data Fabrication in Collaborative Vehicular Perception: Attacks and Countermeasures" https://arxiv.org/abs/2309.12955
+Repo for USENIX security 2024 paper "On Data Fabrication in Collaborative Vehicular Perception: Attacks and Countermeasures" [Arxiv](https://arxiv.org/abs/2309.12955) DOI:10.48550/arXiv.2309.12955
 
 ## Requirements
 - Python package manager: conda
