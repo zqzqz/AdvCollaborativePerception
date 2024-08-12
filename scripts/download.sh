@@ -1,6 +1,8 @@
 #!/usr/bin/env bash -l
 set -e
 
+env_name="advCP"
+
 echo "########################## Download ##########################"
 if [ ! -d models ]; then
 	mkdir models
