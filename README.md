@@ -40,7 +40,7 @@ The scripts will install dependencies, download dataset from Google Drives, set 
 
 **Q:** Problems of CUDA and PyTorch.
 
-**A:** Our script `scripts/setup.sh` by default installs PyTorch 1.9.1 and CUDA 10.2. Please adjust the versions if it does not work for your environment. If the conda environment is not working for you, please try downloading the packages from pip, following instructions from [PyTorch website]{https://pytorch.org/get-started/locally/}.
+**A:** Our script `scripts/setup.sh` by default installs PyTorch 1.9.1 and CUDA 10.2. Please adjust the versions if it does not work for your environment. If the conda environment is not working for you, please try downloading the packages from pip, following instructions from [PyTorch website](https://pytorch.org/get-started/locally/).
 
 **Q:** Deprecated functions of `numpy` or `shapely`.
 
