@@ -70,10 +70,12 @@ def main(args):
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="Script to visualize point clouds")
-    parser.add_argument("--datadir", type=str, default="data/OPV2V", help="Path to the dataset")
+    print(__file__)
+    parser.add_argument("--datadir", type=str, default="/data/OPV2V", help="Path to the dataset")
     parser.add_argument("--dataset", type=str, default="", help="Dataset train/validate/test")
     parser.add_argument("--scenario", type=str, default="", help="Scenario id")
     parser.add_argument("--frame", type=int, default=-1, help="Frame id")
+    parser.add_argument("--resVis", type=str, default="", help="Path to the file")
     args = parser.parse_args()
 
     main(args)

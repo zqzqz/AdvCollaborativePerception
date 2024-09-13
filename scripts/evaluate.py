@@ -38,6 +38,8 @@ total_frames = 10
 logging.basicConfig(filename=os.path.join(result_dir, "evaluate.log"), filemode="a", level=logging.INFO)
 
 dataset = OPV2VDataset(root_path=os.path.join(data_root, "OPV2V"), mode="test")
+print(dataset.root_path)
+print("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAWALLALALLA")
 
 perception_list = [
     OpencoodPerception(fusion_method="early", model_name="pointpillar"),
