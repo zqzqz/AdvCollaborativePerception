@@ -25,7 +25,9 @@ if [ ! -f data/data_experiment.zip ]; then
 fi
 
 if [ ! -f data/OPV2V/test.zip ]; then
-	# Website link: https://drive.google.com/file/d/1fuYK-oNA0FpZtT8rUiEETOCNmtO3FCfS/view?usp=sharing
-	conda run --live-stream -n $env_name gdown -O data/OPV2V/test.zip 1fuYK-oNA0FpZtT8rUiEETOCNmtO3FCfS
+	# Website link 1: https://drive.google.com/file/d/1fuYK-oNA0FpZtT8rUiEETOCNmtO3FCfS/view?usp=sharing
+	# conda run --live-stream -n $env_name gdown -O data/OPV2V/test.zip 1fuYK-oNA0FpZtT8rUiEETOCNmtO3FCfS
+	# Website link 2: https://drive.google.com/file/d/11JdX113eVs6wtCS0c5j7L6KfQcJQn2h0/view?usp=sharing
+	conda run --live-stream -n $env_name gdown -O data/OPV2V/test.zip 11JdX113eVs6wtCS0c5j7L6KfQcJQn2h0
 	cd data/OPV2V && unzip test.zip && cd -
 fi
