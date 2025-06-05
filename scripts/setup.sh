@@ -13,7 +13,7 @@ fi
 
 echo "Installing pytorch, cuda, and related packages ..."
 conda install -y --name $env_name pytorch==1.9.1 torchvision==0.10.1 cudatoolkit=10.2 -c pytorch
-pip install spconv-cu102
+conda run --live-stream -n $env_name pip install spconv-cu102
 
 echo "########################## Dependency Setup ##########################"
 echo "Setting up IoU cuda operator ..."
