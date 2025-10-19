@@ -46,8 +46,8 @@ def draw_attack(attack, normal_case, attack_case, mode="multi_frame", show=False
                 total_bboxes = []
                 if "gt_bboxes" in victim_vehicle_data:
                     total_bboxes.append((bbox_sensor_to_map(victim_vehicle_data["gt_bboxes"], victim_vehicle_data["lidar_pose"]), victim_vehicle_data["object_ids"], "g"))
-                if "result_bboxes" in victim_vehicle_data:
-                    total_bboxes.append((bbox_sensor_to_map(victim_vehicle_data["result_bboxes"], victim_vehicle_data["lidar_pose"]), None, "r"))
+                if "pred_bboxes" in victim_vehicle_data:
+                    total_bboxes.append((bbox_sensor_to_map(victim_vehicle_data["pred_bboxes"], victim_vehicle_data["lidar_pose"]), None, "r"))
                 # label the position of spoofing/removal
                 bbox = attack["attack_meta"]["bboxes"][frame_ids.index(frame_id)]
                 bbox = bbox_sensor_to_map(bbox, attacker_vehicle_data["lidar_pose"])
